@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html,
+        body,
+        div,
+        canvas {
+            margin: 0;
+            padding: 0;
+        }
+
+        .content {
+            width: 100%;
+        }
+
+        #canvas {
+            background-color: rgb(8, 8, 73);
+        }
+    </style>
+</head>
+
+<body>
+    <div style="width: 100%;height: 200px;"></div>
+    <div class="content">
+        <canvas id="canvas"></canvas>
+    </div>
+
+</body>
+<script>
+    let arr = [{
+        "chg": null,
+        "close": 8174.6000000000,
+        "granularity": 60,
+        "high": 8180.3000000000,
+        "low": 8169.4000000000,
+        "open": 8180.1000000000,
+        "price": null,
+        "symbol": "BTC-USDT",
+        "time": "2019-10-09 01:15:00",
+        "volume": 27.2480000000
+    },
+    {
+        "chg": null,
+        "close": 8169.1000000000,
+        "granularity": 60,
+        "high": 8176.2000000000,
+        "low": 8165.0000000000,
+        "open": 8174.6000000000,
+        "price": null,
+        "symbol": "BTC-USDT",
+        "time": "2019-10-09 01:16:00",
+        "volume": 26.0940000000
+    },
+    {
+        "chg": null,
+        "close": 8171.9000000000,
+        "granularity": 60,
+        "high": 8176.8000000000,
+        "low": 8164.7000000000,
+        "open": 8169.1000000000,
+        "price": null,
+        "symbol": "BTC-USDT",
+        "time": "2019-10-09 01:17:00",
+        "volume": 28.0540000000
+    },
+    {
+        "chg": null,
+        "close": 8173.7000000000,
+        "granularity": 60,
+        "high": 8177.5000000000,
+        "low": 8167.0000000000,
+        "open": 8171.9000000000,
+        "price": null,
+        "symbol": "BTC-USDT",
+        "time": "2019-10-09 01:18:00",
+        "volume": 26.5140000000
+    },
+    {
+        "chg": null,
+        "close": 8174.0000000000,
+        "granularity": 60,
+        "high": 8175.3000000000,
+        "low": 8164.7000000000,
+        "open": 8173.3000000000,
+        "price": null,
+        "symbol": "BTC-USDT",
+        "time": "2019-10-09 01:19:00",
+        "volume": 26.2920000000
+    },
+    {
+        "chg": null,
+        "close": 8159.2000000000,
+        "granularity": 60,
+        "high": 8186.3000000000,
+        "low": 8159.2000000000,
+        "open": 8174.0000000000,
+        "price": null,
+        "symbol": "BTC-USDT",
+        "time": "2019-10-09 01:20:00",
+        "volume": 28.1010000000
+    },
+    {
+        "chg": null,
+        "close": 8184.3000000000,
+        "granularity": 60,
+        "high": 8214.8000000000,
+        "low": 8158.7000000000,
+        "open": 8159.1000000000,
+        "price": null,
+        "symbol": "BTC-USDT",
+        "time": "2019-10-09 01:21:00",
+        "volume": 25.6140000000
+    },
+    {
+        "chg": null,
+        "close": 8174.1000000000,
+        "granularity": 60,
+        "high": 8184.7000000000,
+        "low": 8170.0000000000,
+        "open": 8184.3000000000,
+        "price": null,
+        "symbol": "BTC-USDT",
+        "time": "2019-10-09 01:22:00",
+        "volume": 26.5280000000
+    }];
+    // let clientWidth = window.screen.width;  //获取手机屏幕宽度
+    let c_width = document.querySelector(".content").clientWidth;
+    let c_height = c_width / 5 * 4;
+    function setCanvasSize() {
+        let canvas = document.getElementById("canvas");
+        canvas.setAttribute("width", c_width);
+        canvas.setAttribute("height", c_height);
+    }
+    function drawBlockLine() {
+        let canvas = document.getElementById("canvas");
+        let ctx = canvas.getContext("2d");
+        ctx.translate(0.5, 0.5);
+        ctx.strokeStyle = 'rgba(255,255,255,0.1)';
+        ctx.lineWidth = '1';
+        let x = c_width / 5;
+        ctx.moveTo(x, c_width);
+        ctx.lineTo(x, 0);
+
+        ctx.moveTo(x * 2, c_width);
+        ctx.lineTo(x * 2, 0);
+
+        ctx.moveTo(x * 3, c_width);
+        ctx.lineTo(x * 3, 0);
+
+        ctx.moveTo(x * 4, c_width);
+        ctx.lineTo(x * 4, 0);
+
+        ctx.moveTo(0, c_height - x);
+        ctx.lineTo(c_width, c_height - x);
+
+        ctx.moveTo(0, c_height - x * 2);
+        ctx.lineTo(c_width, c_height - x * 2);
+
+        ctx.moveTo(0, c_height - x * 3);
+        ctx.lineTo(c_width, c_height - x * 3);
+
+        ctx.stroke();
+    }
+    function init() {
+        setCanvasSize();    //设置canvas宽高
+        drawBlockLine();
+    }
+    init();
+</script>
+
+</html>
